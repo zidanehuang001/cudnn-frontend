@@ -774,9 +774,9 @@ class SDPABackwardNode : public NodeCRTP<SDPABackwardNode> {
         //    - validate Q and dQ have the same dims
 
         // validate basic dimension requirements
-        RETURN_CUDNN_FRONTEND_ERROR_IF((d_qk > 128) || (d_qk % 8 != 0) || (d_v > 128) || (d_v % 8 != 0),
+        RETURN_CUDNN_FRONTEND_ERROR_IF((d_qk > 256) || (d_qk % 8 != 0) || (d_v > 256) || (d_v % 8 != 0),
                                        error_code_t::GRAPH_NOT_SUPPORTED,
-                                       "Num hidden_dim shoud be less than 128 and hidden_dim should be multiple of 8");
+                                       "Num hidden_dim shoud be less than 256 and hidden_dim should be multiple of 8");
 
         RETURN_CUDNN_FRONTEND_ERROR_IF((h_q % h_k != 0) || (h_q % h_v != 0),
                                        error_code_t::GRAPH_NOT_SUPPORTED,
